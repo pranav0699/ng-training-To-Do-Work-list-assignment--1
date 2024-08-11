@@ -1,0 +1,14 @@
+<div >
+  <div class="task-container">
+    <div class="task-header">
+      <h2>Tasks</h2>
+      <div class="task-controls">
+        <button class="btn new-task"  (click)="openTaskForm()">New Task</button>
+        <button class="btn refresh-task" (click)="reload()">Refresh</button>
+        <input type="text" class="search-task" placeholder="Search">
+      </div>
+    </div>
+  </div>
+  <app-task-list></app-task-list>
+  <app-task-form></app-task-form>
+</div>

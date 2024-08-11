@@ -1,0 +1,47 @@
+.container{
+    width: 100%;
+}
+.task-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px 20px 3px;
+    box-sizing: border-box;
+    background-color: #ccc;
+  }
+  
+  .task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    
+  }
+  @media (max-width: 768px) {
+    .task-header {
+      flex-direction: column;
+    }
+    .task-controls{
+      flex-direction: column;
+
+    }
+  }
+  
+
+  
+  .task-controls {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn {
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .search-task {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }

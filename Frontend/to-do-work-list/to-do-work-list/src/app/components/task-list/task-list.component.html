@@ -1,0 +1,78 @@
+
+<div class="task-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><input type="checkbox"></th>
+          <th>Assigned To</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Comments</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (task of paginatedTasks; track task) {
+          <tr>
+              <td><input type="checkbox"></td>
+              <td>{{ task.user }}</td>
+              <td>{{ task.status }}</td>
+              <!-- <td>{{ task.dueDate | date:'dd/MM/yyyy' }}</td> -->
+              <!-- <td>{{ task.priority }}</td> -->
+              <td>{{ task.dueDate }}</td>
+              <td>{{ task.priority }}</td>
+              <td>{{ task.description }}</td>
+              <td>
+                <div class="dropdown">
+                  <button class="dropdown-btn">⋮</button>
+                  <div class="dropdown-content">
+                    <a href="#" (click)="editTask(task)">Edit</a>
+                    <a href="#" (click)="openDeleteConfirmation(task)">Delete</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+       }
+      </tbody>
+    </table>
+  
+
+  </div>
+  <div class="pagination">
+    <div class="rows-per-page">
+      <select [(ngModel)]="rowsPerPage" (change)="updatePagination()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+    <button (click)="goToFirstPage()">&laquo; First</button>
+    <button (click)="goToPreviousPage()">&lsaquo; Prev</button>
+    <span>{{ currentPage + 1 }}</span>
+    <button (click)="goToNextPage()">Next &rsaquo;</button>
+    <button (click)="goToLastPage()">Last &raquo;</button>
+    
+  </div>
+  <app-task-form ></app-task-form>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalVisible}" [style.display]="isModalVisible ? 'block' : 'none'">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this task?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
